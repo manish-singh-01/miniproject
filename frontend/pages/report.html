@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Disaster | Disaster Management Portal</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                🚨 Disaster Management
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="safety.html">Safety</a></li>
+                <li><a href="relief.html">Relief Centres</a></li>
+                <li><a href="report.html">Report Disaster</a></li>
+            </ul>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </nav>
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <section class="report-section">
+
+            <h1>📝 Report a Disaster</h1>
+
+            <p class="section-description">
+                Report a disaster or emergency incident to help
+                authorities understand the situation.
+            </p>
+
+
+            <!-- ================= REPORT FORM ================= -->
+
+            <form class="report-form">
+
+                <!-- Disaster Type -->
+
+                <div class="form-group">
+
+                    <label for="disasterType">
+                        Disaster Type
+                    </label>
+
+                    <select id="disasterType" name="disasterType" required>
+
+                        <option value="">
+                            Select Disaster Type
+                        </option>
+
+                        <option value="flood">
+                            Flood
+                        </option>
+
+                        <option value="earthquake">
+                            Earthquake
+                        </option>
+
+                        <option value="cyclone">
+                            Cyclone
+                        </option>
+
+                        <option value="fire">
+                            Fire
+                        </option>
+
+                        <option value="landslide">
+                            Landslide
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="Enter disaster location"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="6"
+                        placeholder="Describe the disaster or emergency situation"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Date -->
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <button type="submit" class="primary-btn">
+                    Submit Report 🚨
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>
+            🚨 Disaster Management Portal
+        </h3>
+
+        <p>
+            Providing disaster information and emergency resources
+            through one centralized platform.
+        </p>
+
+        <p class="copyright">
+            © 2026 Disaster Management Portal
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
