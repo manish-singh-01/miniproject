@@ -1,0 +1,384 @@
+.responder-page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-primary, #0b1120);
+  color: var(--text-primary, #f8fafc);
+}
+
+/* ── Sidebar ── */
+.responder-sidebar {
+  width: 280px;
+  background: #131d31;
+  border-right: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 18px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.responder-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.responder-sidebar__brand span { font-size: 1.6rem; }
+.responder-sidebar__brand h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+
+.responder-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+  margin-bottom: 16px;
+}
+
+.responder-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.responder-info { display: flex; flex-direction: column; }
+.responder-name { font-weight: 600; font-size: 0.95rem; }
+.responder-badge {
+  font-size: 0.72rem;
+  color: #10b981;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* GPS Beacon Box */
+.gps-indicator-box {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+.gps-pulse {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #34d399;
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: beaconPulse 1.5s infinite;
+}
+@keyframes beaconPulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+.gps-text {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 6px 0 10px;
+  font-family: monospace;
+}
+.btn-gps-sync {
+  width: 100%;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid #10b981;
+  color: #6ee7b7;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-gps-sync:hover { background: #10b981; color: #000; }
+
+.responder-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.responder-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.responder-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+.responder-nav-item.active {
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.18), rgba(14, 165, 233, 0.05));
+  color: #38bdf8;
+  border-left: 3px solid #38bdf8;
+}
+
+.responder-logout-btn {
+  margin-top: auto;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.responder-logout-btn:hover { background: #ef4444; color: #fff; }
+
+/* ── Main Area ── */
+.responder-main {
+  flex: 1;
+  padding: 36px 40px;
+  overflow-y: auto;
+}
+
+.responder-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  z-index: 999;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.responder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+.responder-header h1 { font-size: 1.85rem; font-weight: 800; margin-bottom: 6px; }
+.responder-subtitle { color: #94a3b8; font-size: 0.95rem; }
+
+/* ── Stats Grid ── */
+.responder-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.responder-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #131d31;
+  border: 1px solid #1e293b;
+}
+
+/* ── Grid Layout: Missions & Live Alerts ── */
+.responder-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 980px) {
+  .responder-content-grid { grid-template-columns: 1fr; }
+  .responder-page { flex-direction: column; }
+  .responder-sidebar { width: 100%; height: auto; position: static; }
+}
+
+.missions-panel {
+  background: #131d31;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.panel-header-title h2 { font-size: 1.3rem; font-weight: 700; }
+.missions-count { font-size: 0.85rem; color: #64748b; font-weight: 600; }
+
+.missions-filter {
+  display: flex;
+  gap: 8px;
+}
+.btn-filter {
+  background: #0b1120;
+  border: 1px solid #1e293b;
+  color: #94a3b8;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-filter:hover { background: #1e293b; color: #fff; }
+.btn-filter.active {
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+  color: #fff;
+}
+
+.empty-missions-box {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+}
+.empty-icon { font-size: 2.8rem; margin-bottom: 12px; display: block; }
+.empty-missions-box h3 { font-size: 1.2rem; color: #f1f5f9; margin-bottom: 6px; }
+
+/* ── Mission Card ── */
+.mission-card {
+  background: #0b1120;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: transform 0.2s ease, border-color 0.2s;
+}
+.mission-card:hover { border-color: #334155; }
+.mission-card.status-assigned { border-left: 5px solid #f59e0b; }
+.mission-card.status-en_route { border-left: 5px solid #3b82f6; }
+.mission-card.status-on_site { border-left: 5px solid #8b5cf6; }
+.mission-card.status-done { border-left: 5px solid #10b981; opacity: 0.85; }
+
+.mission-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.mission-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mission-title-group h3 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+.dispatch-time { font-size: 0.8rem; color: #64748b; font-weight: 600; }
+
+.mission-desc { color: #cbd5e1; font-size: 0.9rem; line-height: 1.45; margin-bottom: 12px; }
+
+.incident-context-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.context-label { color: #64748b; font-weight: 600; }
+
+.notes-input-box {
+  margin-bottom: 14px;
+}
+.notes-input-box input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #131d31;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.85rem;
+}
+.notes-input-box input:focus { border-color: #0ea5e9; }
+
+.mission-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-status {
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+.btn-en-route { background: #d97706; color: #fff; }
+.btn-en-route:hover { background: #b45309; }
+.btn-on-site { background: #2563eb; color: #fff; }
+.btn-on-site:hover { background: #1d4ed8; }
+.btn-complete { background: #16a34a; color: #fff; }
+.btn-complete:hover { background: #15803d; }
+.completed-badge {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+/* ── Side Alerts Panel ── */
+.side-alerts-panel {
+  background: #131d31;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 24px;
+  height: fit-content;
+}
+.side-alerts-panel h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+.panel-sub { font-size: 0.8rem; color: #64748b; margin-bottom: 18px; }
+
+.threat-card {
+  background: #0b1120;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.threat-critical { border-left: 4px solid #ef4444; }
+.threat-high { border-left: 4px solid #f97316; }
+.threat-medium { border-left: 4px solid #eab308; }
+.threat-low { border-left: 4px solid #3b82f6; }
+
+.threat-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.threat-type { font-size: 0.72rem; text-transform: uppercase; color: #94a3b8; font-weight: 700; }
+.threat-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+.threat-card p { font-size: 0.82rem; color: #94a3b8; line-height: 1.4; margin-bottom: 8px; }
+.threat-card small { font-size: 0.75rem; color: #64748b; font-weight: 600; }

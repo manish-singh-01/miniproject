@@ -1,0 +1,50 @@
+.emergency-page { min-height: 100vh; padding-top: 80px; }
+
+.emergency-page__hero {
+  text-align: center;
+  padding: 56px 24px 40px;
+  background: linear-gradient(135deg, var(--bg-secondary), rgba(239,68,68,0.04));
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
+}
+.emergency-page__hero h1 { margin-bottom: 12px; }
+.emergency-page__hero p { color: var(--text-secondary); }
+
+.service-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(239,68,68,0.3);
+  box-shadow: 0 8px 30px rgba(239,68,68,0.1);
+}
+.service-card__icon { font-size: 2.2rem; flex-shrink: 0; }
+.service-card__body { flex: 1; }
+.service-card__body h3 { font-size: 1rem; margin-bottom: 4px; }
+.service-card__body p { color: var(--text-muted); font-size: 0.8rem; }
+.service-card__number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-red);
+  white-space: nowrap;
+}
+
+.tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+.tip-card__icon { font-size: 1.5rem; flex-shrink: 0; }
+.tip-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
