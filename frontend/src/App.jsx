@@ -1,9 +1,9 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -18,20 +18,17 @@ import ResponderDashboard from './pages/ResponderDashboard';
 
 const App = () => (
   <AuthProvider>
-    <BrowserRouter>
-     <BrowserRouter basename="/miniproject">
-        {/* Public pages with Navbar */}
+    <BrowserRouter basename="/miniproject">
+      <Routes>
         <Route path="/" element={<><Navbar /><Home /></>} />
         <Route path="/alerts" element={<><Navbar /><Alerts /></>} />
         <Route path="/shelters" element={<><Navbar /><Shelters /></>} />
         <Route path="/emergency" element={<><Navbar /><Emergency /></>} />
         <Route path="/safety" element={<><Navbar /><Safety /></>} />
 
-        {/* Auth pages */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected pages */}
         <Route
           path="/report"
           element={
@@ -41,6 +38,7 @@ const App = () => (
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/dashboard"
           element={
@@ -49,6 +47,7 @@ const App = () => (
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/admin"
           element={
@@ -57,6 +56,7 @@ const App = () => (
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/responder"
           element={
@@ -66,7 +66,6 @@ const App = () => (
           }
         />
 
-        {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
