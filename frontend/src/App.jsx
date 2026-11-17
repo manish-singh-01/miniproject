@@ -19,7 +19,7 @@ import ResponderDashboard from './pages/ResponderDashboard';
 const App = () => (
   <AuthProvider>
     <BrowserRouter>
-      <Routes>
+     <BrowserRouter basename="/miniproject">
         {/* Public pages with Navbar */}
         <Route path="/" element={<><Navbar /><Home /></>} />
         <Route path="/alerts" element={<><Navbar /><Alerts /></>} />
